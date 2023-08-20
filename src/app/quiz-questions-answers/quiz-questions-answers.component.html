@@ -1,0 +1,35 @@
+<p>quiz-questions-answers works!</p>
+
+
+<ul>
+    <ng-container *ngFor="let questions of question_answers_list;">
+      <li>
+        {{questions.question}}
+        <!-- <button #buttonRef1 (click)="increaseClickCount(questions, questions.correct_answer )" [ngStyle]="clickCount.get(questions) == questions.correct_answer ? {'background-color': 'green'} : {'background-color': 'white'}" >{{questions.correct_answer}}</button> -->
+        <!-- <ng-container *ngFor="let incorrect_answers of incorrect_answers;">
+            <button>{{incorrect_answers}}</button>
+
+        </ng-container> -->
+
+        <!-- {{ questions | json}} -->
+        <ng-container *ngFor="let answers of getAnswersOnTheBasisOfQuestion(questions.question)">
+          <button (click)="increaseClickCount(questions.question, answers)" [ngStyle]="evaluateBackgroundColor(questions.question, answers) ? {'background-color': 'green'} : {'background-color': 'white'}">{{answers}}</button>
+        </ng-container>
+
+        <!-- <button  (click)="increaseClickCount(questions, questions.incorrect_answers[0])" [ngStyle]="clickCount.get(questions) == questions.incorrect_answers[0] ? {'background-color': 'green'} : {'background-color': 'white'}" >{{questions.incorrect_answers[0]}}</button>
+        <button (click)="increaseClickCount(questions, questions.incorrect_answers[1])" [ngStyle]="clickCount.get(questions) == questions.incorrect_answers[1] ? {'background-color': 'green'} : {'background-color': 'white'}" >{{questions.incorrect_answers[1]}}</button>
+        <button   (click)="increaseClickCount(questions, questions.incorrect_answers[2])" [ngStyle]="clickCount.get(questions) == questions.incorrect_answers[2] ? {'background-color': 'green'} : {'background-color': 'white'}" >{{questions.incorrect_answers[2]}}</button> -->
+
+        <!-- <button  #buttonRef2 (click)="increaseClickCount(questions, buttonRef2.value)" [ngStyle]="clickCount.get(questions) == buttonRef2.value ? {'background-color': 'green'} : {'background-color': 'white'}" >{{questions.incorrect_answers[0]}}</button>
+        <button #buttonRef3 (click)="increaseClickCount(questions, buttonRef3.value)" [ngStyle]="clickCount.get(questions) == buttonRef3.value ? {'background-color': 'green'} : {'background-color': 'white'}" >{{questions.incorrect_answers[1]}}</button>
+        <button  #buttonRef4 (click)="increaseClickCount(questions, buttonRef4.value)" [ngStyle]="clickCount.get(questions) == buttonRef4.value ? {'background-color': 'green'} : {'background-color': 'white'}" >{{questions.incorrect_answers[2]}}</button> -->
+
+      </li>
+    </ng-container>
+
+   </ul>
+
+   <ng-container *ngIf="clickCount.size == 5">
+
+    <button [routerLink]="'/results'">Submit</button>
+   </ng-container>

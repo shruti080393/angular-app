@@ -1,0 +1,29 @@
+<div style="text-align:center">
+	<h1>
+		Quiz Maker
+	</h1>
+</div>
+
+<div style="display:block;">
+			<!-- Form starts -->
+			<form [formGroup]="quizForm" (ngSubmit)="onSubmit()">
+            <select   class="custom-select" formControlName="category" id="categorySelect">
+              <option value="">Select a Category</option>
+              <option  *ngFor="let category of Category" [ngValue]="category.id">{{category.name}}</option>
+            </select>
+
+
+            <select class="custom-select" formControlName="difficulty" id="difficultySelect">
+              <option value="">Select a Difficulty</option>
+              <option *ngFor="let difficulty of Difficulty" [ngValue]="difficulty">{{difficulty}}</option>
+            </select>
+
+          <!-- Submit Button -->
+          <button type="submit" (click)="showChildComponent()" class="btn btn-danger btn-lg btn-block">Create</button>
+      </form><!-- Form ends -->
+
+    </div>
+
+    <ng-container *ngIf="canShowChildComponent">
+    <app-quiz-questions-answers [category]="quizForm.value.category ?? ''"  [difficulty]="quizForm.value.difficulty?? ''"></app-quiz-questions-answers>
+  </ng-container>
