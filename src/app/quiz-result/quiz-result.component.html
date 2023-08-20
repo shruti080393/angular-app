@@ -1,21 +1,24 @@
 <div style="text-align:center">
-	<h1>
-		RESULTS
-	</h1>
+    <h1>
+        RESULTS
+    </h1>
 </div>
 
-    <ng-container *ngFor="let questions of questionAnswersList;">
-        <br/><br/>
-        {{questions.question}}
+<ng-container *ngFor="let questions of questionAnswersList;">
+    <br /><br />
+    {{questions.question}}
 
     <ng-container *ngFor="let answers of getAnswersOnTheBasisOfQuestion(questions.question)">
-        <button  [ngStyle]="evaluateBackgroundColorAndCorrectAnswersCount(questions.question, questions.correct_answer, answers) === 'green' ? {'background-color': 'green'} : evaluateBackgroundColorAndCorrectAnswersCount(questions.question, questions.correct_answer, answers) === 'red' ? {'background-color': 'red'} : {'background-color': 'white'}">{{answers}}</button>
-   </ng-container>
-
+        <button
+            [ngStyle]="evaluateBackgroundColorAndCorrectAnswersCount(questions.question, questions.correct_answer, answers) === 'green' ? {'background-color': 'green'} : evaluateBackgroundColorAndCorrectAnswersCount(questions.question, questions.correct_answer, answers) === 'red' ? {'background-color': 'red'} : {'background-color': 'white'}">{{answers}}</button>
     </ng-container>
 
-    <br/><br/>
-    <span [ngStyle]="correct_answers < 2  ? {'background-color': 'red'} : correct_answers < 4 ? {'background-color': 'yellow'} :  {'background-color': 'green'}">you scored {{correct_answers}} out of 5</span>
+</ng-container>
 
-    <br/><br/>
-    <button [routerLink]="'/create'"> Create a new Quiz</button>
+<br /><br />
+<span
+    [ngStyle]="correct_answers < 2  ? {'background-color': 'red'} : correct_answers < 4 ? {'background-color': 'yellow'} :  {'background-color': 'green'}">you
+    scored {{correct_answers}} out of 5</span>
+
+<br /><br />
+<button [routerLink]="'/create'"> Create a new Quiz</button>

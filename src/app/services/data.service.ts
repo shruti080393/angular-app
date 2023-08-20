@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({
+@Injectable( {
   providedIn: 'root'
-})
+} )
 export class DataService {
 
 
@@ -10,29 +10,29 @@ export class DataService {
   answersMap: Map<string, Array<string>> = new Map();
   selectedAnswersMap: Map<string, string> = new Map();
 
-  constructor() {}
+  constructor() { }
 
-    storeQuestionAnswersList(questionAnswersList: Array<string>) {
-        this.questionAnswersList = questionAnswersList;
-    }
+  storeQuestionAnswersList( questionAnswersList: Array<string> ) {
+    this.questionAnswersList = questionAnswersList;
+  }
 
-    retrieveQuestionAnswersList() {
-        return this.questionAnswersList;
-    }
+  retrieveQuestionAnswersList() {
+    return this.questionAnswersList;
+  }
 
-    storeAnswersMap(answersMap: Map<string, Array<string>>) {
-      this.answersMap = answersMap;
+  storeAnswersMap( answersMap: Map<string, Array<string>> ) {
+    this.answersMap = answersMap;
   }
 
   retrieveAnswersMap() {
-      return this.answersMap;
+    return this.answersMap;
   }
 
-  storeSelectedAnswersMap(selectedAnswersMap: Map<string, string>) {
+  storeSelectedAnswersMap( selectedAnswersMap: Map<string, string> ) {
     this.selectedAnswersMap = selectedAnswersMap;
-}
+  }
 
-retrieveSelectedAnswersMap() {
+  retrieveSelectedAnswersMap() {
     return this.selectedAnswersMap;
-}
+  }
 }

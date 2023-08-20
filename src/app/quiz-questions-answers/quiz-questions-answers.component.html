@@ -1,13 +1,13 @@
+<ng-container *ngFor="let questions of question_answers_list;">
+  <br /><br />
+  {{questions.question}}
+  <ng-container *ngFor="let answers of getAnswersOnTheBasisOfQuestion(questions.question)">
+    <button (click)="calcuateNumOfQuestionsAnswered(questions.question, answers)"
+      [ngStyle]="evaluateBackgroundColor(questions.question, answers) ? {'background-color': 'green'} : {'background-color': 'white'}">{{answers}}</button>
+  </ng-container>
+</ng-container>
 
-    <ng-container *ngFor="let questions of question_answers_list;">
-      <br/><br/>
-        {{questions.question}}
-        <ng-container *ngFor="let answers of getAnswersOnTheBasisOfQuestion(questions.question)">
-          <button (click)="calcuateNumOfQuestionsAnswered(questions.question, answers)" [ngStyle]="evaluateBackgroundColor(questions.question, answers) ? {'background-color': 'green'} : {'background-color': 'white'}">{{answers}}</button>
-        </ng-container>
-    </ng-container>
-
-    <br/><br/>
-   <ng-container *ngIf="selectedAnswersMap.size == 5">
-    <button [routerLink]="'/results'">Submit</button>
-   </ng-container>
+<br /><br />
+<ng-container *ngIf="selectedAnswersMap.size == 5">
+  <button [routerLink]="'/results'">Submit</button>
+</ng-container>

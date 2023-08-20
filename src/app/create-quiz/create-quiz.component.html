@@ -1,27 +1,28 @@
 <div style="text-align:center">
-	<h1>
-		Quiz Maker
-	</h1>
+  <h1>
+    Quiz Maker
+  </h1>
 </div>
 
 <div style="display:block;">
-			<form [formGroup]="quizForm" (ngSubmit)="onSubmit()">
-            <select   class="custom-select" formControlName="category" id="categorySelect">
-              <option value="">Select a Category</option>
-              <option  *ngFor="let category of category_list" [ngValue]="category.id">{{category.name}}</option>
-            </select>
+  <form [formGroup]="quizForm">
+    <select formControlName="category" id="categorySelect">
+      <option value="">Select a Category</option>
+      <option *ngFor="let category of category_list" [ngValue]="category.id">{{category.name}}</option>
+    </select>
 
 
-            <select class="custom-select" formControlName="difficulty" id="difficultySelect">
-              <option value="">Select a Difficulty</option>
-              <option *ngFor="let difficulty of difficulty_list" [ngValue]="difficulty">{{difficulty}}</option>
-            </select>
+    <select formControlName="difficulty" id="difficultySelect">
+      <option value="">Select a Difficulty</option>
+      <option *ngFor="let difficulty of difficulty_list" [ngValue]="difficulty">{{difficulty}}</option>
+    </select>
 
-          <button type="submit" id="createBtn">Create</button>
-      </form>
+    <button (click)="onSubmit()" type="submit" id="createBtn">Create</button>
+  </form>
 
 </div>
 
 <ng-container *ngIf="isSubmitted">
-  <app-quiz-questions-answers [category]="quizForm.value.category ?? ''"  [difficulty]="quizForm.value.difficulty ?? ''"></app-quiz-questions-answers>
+  <app-quiz-questions-answers [category]="quizForm.value.category ?? ''"
+    [difficulty]="quizForm.value.difficulty ?? ''"></app-quiz-questions-answers>
 </ng-container>
