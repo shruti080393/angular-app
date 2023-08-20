@@ -7,8 +7,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CreateQuizComponent } from './create-quiz/create-quiz.component';
 import { HttpClientModule } from "@angular/common/http";
 import { CommonModule } from '@angular/common';
-
-
 import { QuizQuestionsAnswersComponent } from './quiz-questions-answers/quiz-questions-answers.component';
 import { QuizResultComponent } from './quiz-result/quiz-result.component';
 

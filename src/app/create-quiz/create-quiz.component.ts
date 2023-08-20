@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { CategoryListService } from '../category-list.service';
+import { CategoryListService } from '../services/category-list.service';
+import { TriviaCategories } from '../models/triviaCategories';
 
 @Component({
   selector: 'app-create-quiz',
@@ -8,61 +9,32 @@ import { CategoryListService } from '../category-list.service';
   styleUrls: ['./create-quiz.component.css']
 })
 export class CreateQuizComponent implements OnInit {
-
   isSubmitted = false;
+  category_list = new Array();
+  difficulty_list = new Array();
 
-  // City Names
-  Category = new Array();
-  Difficulty = new Array();
-
-  canShowChildComponent: boolean = false;
+  /*########### Form ###########*/
+  quizForm = this.fb.group({
+    category: '',
+    difficulty: ''
+  });
 
   constructor(public fb: FormBuilder, public categoryListService: CategoryListService) { }
 
   ngOnInit(): void {
-    this.categoryListService.getCategoryList().subscribe( (data) => {
-      data.trivia_categories.forEach( (element: Object) => {
-        console.log("element is" + element)
-        this.Category.push(element);
+    this.categoryListService.getCategoryList().subscribe((data) => {
+      data.trivia_categories.forEach( (element: TriviaCategories) => {
+        this.category_list.push(element);
     });
+});
 
-      });
-
-      this.Difficulty.push("Easy")
-      this.Difficulty.push("Medium")
-      this.Difficulty.push("Hard")
+      this.difficulty_list.push("Easy")
+      this.difficulty_list.push("Medium")
+      this.difficulty_list.push("Hard")
   }
 
-  /*########### Form ###########*/
-  quizForm = this.fb.group({
-    category: ['', ''],
-    difficulty: ['', '']
-  })
-
-  // Getter method to access formcontrols
-  get getCategory() {
-    return this.quizForm.get('category') ?? '';
-  }
-
-   // Getter method to access formcontrols
-   get getDifficulty() {
-    return this.quizForm.get('difficulty') ?? '';
-  }
-
-   /*########### Template Driven Form ###########*/
    onSubmit() {
     this.isSubmitted = true;
-    if (!this.quizForm.valid) {
-      return false;
-    } else {
-      alert(JSON.stringify(this.quizForm.value));
-      return true;
 }
 
-}
-
-showChildComponent()
-{
-  this.canShowChildComponent = true;
-}
 }

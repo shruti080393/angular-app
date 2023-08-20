@@ -9,8 +9,8 @@ export class DataService {
   questionAnswersList: Array<string> = [];
   answersMap: Map<string, Array<string>> = new Map();
   selectedAnswersMap: Map<string, string> = new Map();
-  correctAnswersMap: Map<string, string> = new Map();
-    constructor() {}
+
+  constructor() {}
 
     storeQuestionAnswersList(questionAnswersList: Array<string>) {
         this.questionAnswersList = questionAnswersList;
@@ -34,13 +34,5 @@ export class DataService {
 
 retrieveSelectedAnswersMap() {
     return this.selectedAnswersMap;
-}
-
-storeCorrectAnswersMap(correctAnswersMap: Map<string, string>) {
-  this.correctAnswersMap = correctAnswersMap;
-}
-
-retrieveCorrectAnswersMap() {
-  return this.correctAnswersMap;
 }
 }
