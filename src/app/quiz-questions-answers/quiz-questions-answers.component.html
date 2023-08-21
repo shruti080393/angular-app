@@ -1,9 +1,9 @@
 <ng-container *ngFor="let questions of question_answers_list;">
   <br /><br />
-  {{questions.question}}
+ <div [innerHtml]="questions.question"></div>
   <ng-container *ngFor="let answers of getAnswersOnTheBasisOfQuestion(questions.question)">
-    <button (click)="calcuateNumOfQuestionsAnswered(questions.question, answers)"
-      [ngStyle]="evaluateBackgroundColor(questions.question, answers) ? {'background-color': 'green', 'margin-left': '10px'} : {'background-color': 'white', 'margin-left': '10px'}">{{answers}}</button>
+    <button [innerHtml] = "answers" (click)="calcuateNumOfQuestionsAnswered(questions.question, answers)"
+      [ngStyle]="evaluateBackgroundColor(questions.question, answers) ? {'background-color': 'green', 'margin-left': '10px'} : {'background-color': 'white', 'margin-left': '10px'}"></button>
   </ng-container>
 </ng-container>
 

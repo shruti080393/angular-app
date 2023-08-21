@@ -34,7 +34,7 @@ export class QuizQuestionsAnswersComponent implements OnInit {
         this.answersList = [];
         this.answersList.push( element.correct_answer );
         element.incorrect_answers.forEach( ( answer ) => {
-          this.answersList.push( answer );
+          this.answersList.push( answer);
         } );
 
         //randomize the order of answers

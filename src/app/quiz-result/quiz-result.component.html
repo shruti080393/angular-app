@@ -6,11 +6,10 @@
 
 <ng-container *ngFor="let questions of questionAnswersList;">
     <br /><br />
-    {{questions.question}}
+    <div [innerHtml]="questions.question"></div>
 
     <ng-container *ngFor="let answers of getAnswersOnTheBasisOfQuestion(questions.question)">
-        <button
-            [ngStyle]="evaluateBackgroundColorAndCorrectAnswersCount(questions.question, questions.correct_answer, answers) === 'green' ? {'background-color': 'green', 'margin-left': '10px'} : evaluateBackgroundColorAndCorrectAnswersCount(questions.question, questions.correct_answer, answers) === 'red' ? {'background-color': 'red', 'margin-left': '10px'} : {'background-color': 'white', 'margin-left': '10px'}">{{answers}}</button>
+        <button [innerHtml]="answers" [ngStyle]="evaluateBackgroundColorAndCorrectAnswersCount(questions.question, questions.correct_answer, answers) === 'green' ? {'background-color': 'green', 'margin-left': '10px'} : evaluateBackgroundColorAndCorrectAnswersCount(questions.question, questions.correct_answer, answers) === 'red' ? {'background-color': 'red', 'margin-left': '10px'} : {'background-color': 'white', 'margin-left': '10px'}"></button>
     </ng-container>
 
 </ng-container>
